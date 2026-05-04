@@ -1,7 +1,0 @@
-package: github.com/nnao45/pexpo
-import:
-- package: github.com/dariubs/percent
-- package: github.com/mattn/go-runewidth
-  version: v0.0.2
-- package: github.com/nsf/termbox-go
-- package: github.com/tatsushid/go-fastping
