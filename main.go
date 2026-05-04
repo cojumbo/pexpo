@@ -545,14 +545,15 @@ func drawLoop(maxX, maxY int, pauser *Pauser) {
 	/*making logging file*/
 	day := time.Now()
 	formatingDay := day.Format(DAY)
-	result := "result_" + formatingDay + ".txt"
+	result := "result_" + formatingDay + "_" + strconv.Itoa(os.Getpid()) + ".txt"
 	u, err := user.Current()
 	fatal(err)
 	rfile := filepath.Join(u.HomeDir, RESULT_DIR, result)
 
 	/*drawing column*/
 	drawLine(maxX-44, 0, "Ctrl+S: Stop & Restart, Esc or Ctrl+C: Exit.")
-	drawLine(maxX-9, maxY-1, fmt.Sprintf("ver. %v", version))
+	verStr := fmt.Sprintf("ver. %v", version)
+	drawLine(maxX-len(verStr), maxY-1, verStr)
 	drawLineColorful(LIST_H_X-1, 1, fmt.Sprintf("%v", "           Now, Loss counting Per host.            "), termbox.ColorDefault, termbox.ColorMagenta)
 	drawLineColor(LIST_H_X, 2, fmt.Sprintf("%v", "Hostname"), termbox.ColorWhite)
 	drawLineColor(LIST_P_X, 2, fmt.Sprintf("%v", "Loss(%)"), termbox.ColorWhite)
