@@ -57,7 +57,6 @@ import (
 	"context"
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"math"
 	"net"
@@ -709,7 +708,7 @@ func init() {
 	if *vi {
 		edited := make(chan struct{}, 0)
 		go func() {
-			tmplist, err := ioutil.TempFile("/tmp", "pexpotmp")
+			tmplist, err := os.CreateTemp("/tmp", "pexpotmp")
 			defer tmplist.Close()
 			if err != nil {
 				panic(err)
